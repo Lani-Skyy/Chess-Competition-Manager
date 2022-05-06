@@ -6,7 +6,7 @@ SPPC ialah sebuah program untuk menguruskan pertandingan catur (round robin). Ba
 
 1. Cipta sebuah database.
 2. Di sambungan.php, tukarkan nama database kepada nama database dicipta. ```$database = 'nama_database_dicipta';```
-3. Pergi ke login.php melalui localhost di browser anda. Url akan sedikit berbeza bergantung operating system anda. ```localhost/nama_database_dicipta/login.php```
+4. Pergi ke login.php melalui localhost di browser anda. Url akan sedikit berbeza bergantung operating system anda. ```localhost/Chess-Competition-Manager-main/login.php```
 
 ## Progress
 ### DATABASE (TABLES)

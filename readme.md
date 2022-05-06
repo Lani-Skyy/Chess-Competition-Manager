@@ -3,10 +3,14 @@
 SPPC ialah sebuah program untuk menguruskan pertandingan catur (round robin). Bahasa sistem ialah Bahasa Melayu.
 
 ## Installation
+❗ xampp is required
 
-1. Cipta sebuah database.
-2. Di sambungan.php, tukarkan nama database kepada nama database dicipta. ```$database = 'nama_database_dicipta';```
-4. Pergi ke login.php melalui localhost di browser anda. Url akan sedikit berbeza bergantung operating system anda. ```localhost/Chess-Competition-Manager-main/login.php```
+⚠️ path and url can differ based on operating system
+
+1. Save and unzip this folder in ```C:/xampp/htdocs/``` (you can rename the folder to something shorter)
+2. Create a database in phpMyAdmin through localhost in your browser ```http://localhost/phpmyadmin/```
+3. In sambungan.php, change the database name to the name of the database you created earlier. ```$database = 'database_name';```
+4. Go to login.php through localhost in your browser. ```localhost/folder_name/login.php```
 
 ## Progress
 ### DATABASE (TABLES)

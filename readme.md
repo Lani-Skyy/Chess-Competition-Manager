@@ -2,7 +2,9 @@
 
 SPPC ialah sebuah program untuk menguruskan pertandingan catur (round robin). Bahasa sistem ialah Bahasa Melayu.
 
-⚠️Disclaimer! This system is very lacking in error checking, if you use it the way you're supposed to, it should work alright.
+⚠️Disclaimer! 
+
+This system is very lacking in error checking, if you use it the way you're supposed to, it should work alright. Pls ya, don't put DROP TABLE urusetia; as your name or something-
 
 ## Installation
 

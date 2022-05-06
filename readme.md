@@ -1,6 +1,6 @@
 # Sistem Pengurusan Pertandingan Catur (SPPC)
 
-SPPC ialah sebuah program untuk menguruskan pertandingan catur (round robin). Bahasa sistem ialah Bahasa Melayu.
+SPPC is a program to manage chess competitions (round robin). The system language is Malay 🇲🇾.
 
 ## Installation
 ❗ xampp is required

@@ -1,0 +1,85 @@
+/* Pallete
+text: f8f9fa
+background 1: 242424
+background 2: 373737
+main: 
+highlight: 
+ */
+
+/* Basic */
+html {
+    font-size: 1.3rem;  
+}
+
+/* Header
+header div {
+    padding: 1%;
+    text-align: center;
+}
+
+header div ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header div li {
+    border-color: #f8f9fa;
+}
+
+header div a {
+    text-decoration: none;
+    color: #f8f9fa;
+}
+
+.header {
+    background-color: #242424;
+    color: #f8f9fa;
+}
+
+.navi {
+    background-color: #373737;
+    color: #f8f9fa;
+    display: block;
+}
+
+.header ul{
+    justify-content: space-between;
+}
+
+.navi ul{
+    justify-content:space-around;
+} */
+
+/* Content */
+/* .main-content {
+    width:fit-content;
+} */
+
+.dropdown-menu {
+    min-width:96.46px;
+    margin-left:20.800px !important;
+}
+
+.dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-brand {
+    margin:0;
+}
+
+.navbar-top {
+    padding-bottom:0;
+    background-color: #242424;
+}
+.navbar-top .dropdown-menu-dark {
+    background-color: #242424;
+    margin:0;
+}
+.navbar-bottom {
+    padding-top:0;
+    background-color: #373737;
+}

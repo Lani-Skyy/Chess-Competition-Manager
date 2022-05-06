@@ -1,0 +1,46 @@
+DATABASE (TABLES)
+urusetia
+hakim
+peserta
+scores # automatically generated and deleted
+matches # automatically generated and deleted
+
+PAGES
+login.php
+urusetia.php
+info.php #TODO
+hakim.php
+peserta.php
+pusingan.php # buggy
+keputusan.php #TODO
+
+COMPONENTS
+styles.css
+head.php
+header.php
+navbar_1.php
+navbar_2.php
+sambungan.php
+log_keluar.php
+algorithm.php
+
+EXTRA
+echo "<pre>", var_dump($data), "</pre>";
+
+$string = <<<HEREDOC
+    text
+HEREDOC;
+echo $string;
+
+$arrayVariable = [
+    key1  => value1,
+    key2 => value2,
+    key3 => value3
+];
+
+$sql = "";
+$result = mysqli_query($sambungan,$sql);
+
+$_POST = array();
+header("");
+die();

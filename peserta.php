@@ -127,11 +127,11 @@
             include("navbar_1.php");
             include("navbar_2.php");
         ?>
-        <h2>Peserta</h2>
     </header>
-    <div>
+    <div class="center">
+        <h2>Peserta</h2>
         <form action="peserta.php" method="post">
-            <table>
+            <table class="table table-bordered" style="width:80%;margin:auto;">
                 <?php
                     // if no peserta
                     if (sizeof($peserta) == 0) {
@@ -157,12 +157,15 @@
                     // if got peserta
                     else {
                         $string = <<<HEREDOC
-                        <input type="submit" name="reset" value="reset"></td>
-                        <tr>
-                            <td>Id</td>
-                            <td>No KP</td>
-                            <td>Nama</td>
-                        </tr>
+                        <input type="submit" name="reset" value="reset" style="width: 20%;"></td>
+                        <thead>
+                            <tr>
+                                <td>Id</td>
+                                <td>No KP</td>
+                                <td>Nama</td>
+                            </tr>
+                        </thead>
+
                         HEREDOC;
                         echo $string;
 

@@ -1,62 +1,48 @@
-/* Pallete
-text: f8f9fa
-background 1: 242424
-background 2: 373737
-main: 
-highlight: 
- */
+:root {
+    /* --dark1: #242424;
+    --dark2: #373737;
+    --ltext: #f8f9fa;
+    --accent: #3a015c; */
+    --dark1: #514555;
+    --dark2: #6C5C71;
+    --ltext: #f8f9fa;
+    --dtext: rgb(25, 25, 25);
+    --accent: #33427E;
+  }
 
-/* Basic */
-html {
-    font-size: 1.3rem;  
+body {
+    font-size: 1.3rem;
+    text-align:center;
 }
 
-/* Header
-header div {
-    padding: 1%;
-    text-align: center;
+.center {
+    margin: auto;
+    width: 80%;
+    padding-top:2%;
 }
 
-header div ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+h2 {
+    color: var(--dark1);
+    text-decoration: underline;
+}
+h3,h6 {
+    color: var(--dark2);
+    font-weight:normal;
 }
 
-header div li {
-    border-color: #f8f9fa;
+input[type=submit] {
+    background-color: var(--accent);
+    color: var(--ltext);
+    border-radius: 7px;
+    min-width: 100px;
 }
 
-header div a {
-    text-decoration: none;
-    color: #f8f9fa;
+ol { 
+    display: inline-block; 
+    text-align: left; 
 }
 
-.header {
-    background-color: #242424;
-    color: #f8f9fa;
-}
-
-.navi {
-    background-color: #373737;
-    color: #f8f9fa;
-    display: block;
-}
-
-.header ul{
-    justify-content: space-between;
-}
-
-.navi ul{
-    justify-content:space-around;
-} */
-
-/* Content */
-/* .main-content {
-    width:fit-content;
-} */
-
+/* Navbar */
 .dropdown-menu {
     min-width:96.46px;
     margin-left:20.800px !important;
@@ -73,13 +59,23 @@ header div a {
 
 .navbar-top {
     padding-bottom:0;
-    background-color: #242424;
+    background-color: var(--dark1);
 }
 .navbar-top .dropdown-menu-dark {
-    background-color: #242424;
+    background-color: var(--dark1);
     margin:0;
 }
 .navbar-bottom {
     padding-top:0;
-    background-color: #373737;
+    background-color: var(--dark2);
+}
+
+/* Tables */
+tbody {
+    background-color: var(--ltext);
+}
+
+thead {
+    color: var(--ltext);
+    background-color: var(--dark2);
 }

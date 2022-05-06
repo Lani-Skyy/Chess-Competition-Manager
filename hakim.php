@@ -107,26 +107,25 @@
             include("navbar_1.php");
             include("navbar_2.php");
         ?>
-        <h2>Hakim</h2>
     </header>
-    <div>
+    <div class="center">
+        <h2>Hakim</h2>
         <form action="hakim.php" method="post">
-            <table>
-                <tr>
-                    <td>Nama</td>
-                    <td>Tindakan</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="insert" autocomplete="off" placeholder="taip sini">
-                    </td>
-                    <td>
-                        <input type="submit" name="create" value="create">
-                    </td>
-                    <td>
-                        <input type="submit" name="reset" value="reset">
-                    </td>
-                </tr>
+            <table class="table table-bordered" style="width:70%;margin:auto;">
+                <thead>
+                    <tr>
+                        <td>
+                            <input style="width:80%" class="text-center" type="text" name="insert" autocomplete="off" placeholder="taip sini" style="width:60%">
+                        </td>
+                        <td>
+                            <input type="submit" name="create" value="create">
+                        </td>
+                        <td>
+                            <input type="submit" name="reset" value="reset">
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                     for ($i=0; $i < sizeof($hakim); $i++) {
                         $string1 = $hakim[$i]["nama"];
@@ -140,6 +139,7 @@
                         echo $string2;
                     }
                 ?>
+                </tbody>
             </table>
         </form>
     </div>

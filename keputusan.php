@@ -28,22 +28,25 @@
             include("navbar_1.php");
             include("navbar_2.php");
         ?>
-        <h2>Keputusan</h2>
     </header>
-    <div>
-        <table>
+    <div class="center">
+        <h2>Keputusan</h2>
+        <table class="table table-bordered">
             <?php
                 if ($is_peserta) {
                     $string = <<<HEREDOC
-                    <tr>
-                        <td>Kedudukan</td>
-                        <td>Id</td>
-                        <td>No. KP</td>
-                        <td>Nama</td>
-                        <td>Skor</td>
-                    <tr>
+                    <thead>
+                        <tr>
+                            <td>Kedudukan</td>
+                            <td>Id</td>
+                            <td>No. KP</td>
+                            <td>Nama</td>
+                            <td>Skor</td>
+                        <tr>
+                    </thead>
                     HEREDOC;
                     echo $string;
+                    echo "<tbody>";
 
                     try {
                         $sql = "SELECT * FROM scores";
@@ -79,6 +82,8 @@
                             $i++;
                         }
                     } catch (Exception $e) {}
+
+                    echo "<tbody>";
                 } else {
                     echo "Tolong daftarkan peserta";
                 }

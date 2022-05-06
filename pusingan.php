@@ -176,11 +176,11 @@
             include("navbar_1.php");
             include("navbar_2.php");
         ?>
-        <h2>Pusingan</h2>
     </header>
-    <div>
+    <div class="center">
+        <h2>Pusingan</h2>
         <form action="pusingan.php" method="post">
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <?php
                         if (isset($_SESSION["round"])) {
@@ -191,7 +191,7 @@
                             echo "<td>Pusingan: </td>";
                             for ($i=1; $i < $num_rounds+1; $i++) {
                                 $string = <<<HEREDOC
-                                <td><input type="submit" class="round" name="round" value="$i"></td>
+                                <td><input style="min-width: 50px;" type="submit" class="round" name="round" value="$i"></td>
                                 HEREDOC;
                                 echo $string;
                             }
@@ -201,26 +201,29 @@
                     ?>
                 </tr>
             </table>
-            <table>
+            <table class="table table-bordered">
                 <?php
                     if (isset($_SESSION["round"])) {
                         $string = <<<HEREDOC
-                        <tr>
-                            <td></td>
-                            <td>Putih</td>
-                            <td></td>
-                            <td></td>
-                            <td>Hitam</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>No. KP</td>
-                            <td>Nama</td>
-                            <td>Keputusan</td>
-                            <td>Keputusan</td>
-                            <td>Nama</td>
-                            <td>No. KP</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td>Putih</td>
+                                <td></td>
+                                <td></td>
+                                <td>Hitam</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>No. KP</td>
+                                <td>Nama</td>
+                                <td>Keputusan</td>
+                                <td>Keputusan</td>
+                                <td>Nama</td>
+                                <td>No. KP</td>
+                            </tr>
+                        </thead>
+
                         HEREDOC;
                         echo $string;
 

@@ -58,43 +58,45 @@
             include("navbar_1.php");
             include("navbar_2.php");
         ?>
-        <h2>Urusetia</h2>
     </header>
-    <div>
+    <div class="center">
+        <h2>Urusetia</h2>
         <form action="urusetia.php" method="post">
-            <table>
+            <table class="table table-bordered" style="width:70%;margin:auto;">
                 <tr>
-                    <td>Id</td>
-                    <td>
+                    <td style="width:10%;color: var(--ltext);background-color: var(--dark2);">Id</td>
+                    <td style="color: var(--ltext);background-color: var(--dark2);">Nama Pengguna</td>
+                    <td style="color: var(--ltext);background-color: var(--dark2);">Kata Laluan</td>
+                </tr>
+                <tr>
+                     <td>
                         <?php
                             echo "$id";
                         ?>
                     </td>
-                </tr>
-                <tr>
-                    <td>Nama Pengguna</td>
                     <td>
                         <?php
                             echo "$nama_pengguna";
                         ?>
                     </td>
-                    <td><input type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters"></td>
-                    <td><input type="submit" name="update_nama_pengguna" value="update"></td>
-                </tr>
-                <tr>
-                    <td>Kata Laluan</td>
                     <td>
                         <?php
                             echo "$kata_laluan";
                         ?>
                     </td>
-                    <td><input type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters"></td>
-                    <td><input type="submit" name="update_kata_laluan" value="update"></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="delete" value="delete"></td>
+                    <td></td>
+                    <td><input style="width:100%" class="text-center" type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters"></td>
+                    <td><input style="width:100%" class="text-center" type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="update_nama_pengguna" value="update"></td>
+                    <td><input type="submit" name="update_kata_laluan" value="update"></td>
                 </tr>
             </table>
+            <input style="margin-top:1%;" type="submit" name="delete" value="delete">
         </form>
     </div>
 </body>

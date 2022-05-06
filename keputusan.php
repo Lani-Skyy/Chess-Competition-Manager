@@ -61,12 +61,14 @@
                             $scores[$id] = $skor;
                         }
                         arsort($scores);
+                        $i = 1;
                         foreach (array_keys($scores) as $id) {
                             $score = $scores[$id];
                             $no_kp = $peserta["$id"]["no_kp"];
                             $nama = $peserta["$id"]["nama"];
                             $string = <<<HEREDOC
                             <tr>
+                                <td>$i</td>
                                 <td>$id</td>
                                 <td>$no_kp</td>
                                 <td>$nama</td>
@@ -74,6 +76,7 @@
                             <tr>
                             HEREDOC;
                             echo $string;
+                            $i++;
                         }
                     } catch (Exception $e) {}
                 } else {

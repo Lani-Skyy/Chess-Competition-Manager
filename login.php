@@ -17,7 +17,7 @@
                 $_SESSION["urusetia"]["id"] = $urusetia["id"];
 
                 $_POST = array();
-                header("Location:./hakim.php");
+                header("Location:./info.php");
                 die();
             }
         }
@@ -33,7 +33,7 @@
                     $_SESSION["urusetia"]["id"] = $urusetia["id"];
     
                     $_POST = array();
-                    header("Location:./hakim.php");
+                    header("Location:./info.php");
                     die();
                 }
                 else

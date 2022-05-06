@@ -233,6 +233,7 @@
                                 $w_no_kp = "-";
                                 $w_nama = "bye";
                                 $w_kid = "keputusan_NULL";
+                                $w_skor = "no skor";
                             } else {
                                 $w_no_kp = $peserta[$w]["no_kp"];
                                 $w_nama = $peserta[$w]["nama"];
@@ -252,6 +253,7 @@
                                 $b_no_kp = "-";
                                 $b_nama = "bye";
                                 $b_kid = "keputusan_NULL";
+                                $b_skor = "no skor";
                             } else {
                                 $b_no_kp = $peserta[$b]["no_kp"];
                                 $b_nama = $peserta[$b]["nama"];

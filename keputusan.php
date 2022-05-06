@@ -55,9 +55,8 @@
                             $skor = 0;
                             for ($i=1;$i<$num_col+1;$i++) {
                                 $r = "r$i";
-                                $accepted = ["0","0.5","1"];
-                                if (in_array($array[$r],$accepted)) {
-                                    $skor = $skor + (int)$array[$r];
+                                if ($array[$r] !== "NULL") {
+                                    $skor = $skor + floatval($array[$r]);
                                 }
                             }
                             $string = <<<HEREDOC

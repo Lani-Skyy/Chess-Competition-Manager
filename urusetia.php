@@ -15,10 +15,6 @@
             $mode = array_search('update', $_POST);
             $mode = substr($mode, 7, );
             $string = $_POST["$mode"];
-            echo "session, nama_pengguna:$nama_pengguna. kata_laluan:$kata_laluan. id:$id.<br>";
-            echo "mode:$mode.<br>";
-            echo "string:$string.<br>";
-            echo "id:$id.<br>";
 
             // error checking
             if ($string == "") {

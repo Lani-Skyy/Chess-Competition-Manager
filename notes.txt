@@ -2,8 +2,8 @@ DATABASE (TABLES)
 urusetia
 hakim
 peserta
-scores # automatically generated and deleted
-matches # automatically generated and deleted
+scores
+matches
 
 PAGES
 login.php

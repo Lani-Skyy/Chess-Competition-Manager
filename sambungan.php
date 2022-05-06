@@ -2,7 +2,7 @@
     $host = 'localhost';
     $user = 'root';
     $password = '';
-    $database = 'pertandingan';
+    $database = 'pertandingan'; // Tukar nama jika berlainan
 
     $sambungan = mysqli_connect($host,$user,$password,$database);
     // if(!$sambungan)
@@ -13,5 +13,4 @@
     // {
     //     echo "<p>Sambungan berjaya</p>";
     // }
-    $masalah_sambungan = "Terdapat masalah sambungan dengan database."
 ?>

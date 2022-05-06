@@ -10,6 +10,7 @@ This system is very lacking in error checking, if you use it the way you're supp
 
 1. Cipta sebuah database.
 2. Di sambungan.php, tukarkan nama database dari 'pertandingan' kepada nama database dicipta.
+3. Pergi ke  ```localhost/nama_database_dicipta/login.php``` di browser anda. Url akan sedikit berbeza bergantung operating system anda.
 
 ## Progress
 ### DATABASE (TABLES)

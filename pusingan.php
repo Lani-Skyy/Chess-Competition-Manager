@@ -6,16 +6,18 @@
     include("algorithm.php");
 
     // Get all peserta
-    $sql = "SELECT * FROM peserta";
-    $result = mysqli_query($sambungan,$sql);
-    while ($array = mysqli_fetch_array($result)) {
-        $peserta[] = [
-            "id" => $array["id"],
-            "no_kp" => $array["no_kp"],
-            "nama" => $array["nama"]
-            ];
-        $peserta_id[] = $array["id"];
-    }
+    try {
+        $sql = "SELECT * FROM peserta";
+        $result = mysqli_query($sambungan,$sql);
+        while ($array = mysqli_fetch_array($result)) {
+            $peserta[] = [
+                "id" => $array["id"],
+                "no_kp" => $array["no_kp"],
+                "nama" => $array["nama"]
+                ];
+            $peserta_id[] = $array["id"];
+        }
+    } catch (Exception $e) {}
     $is_peserta = isset($peserta_id);
 
     if ($is_peserta) {

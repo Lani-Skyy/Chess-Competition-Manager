@@ -27,7 +27,7 @@ This system is very lacking in error checking, if you use it the way you're supp
 - hakim.php #COMPLETE
 - peserta.php #COMPLETE
 - pusingan.php #BUGGY
-- keputusan.php #TODO
+- keputusan.php #COMPLETE
 
 ### COMPONENTS
 - styles.css #TODO

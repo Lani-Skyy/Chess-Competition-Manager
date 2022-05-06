@@ -3,14 +3,37 @@
     include("sambungan.php");
     $_SESSION["login"] = false;
 
+    // create urusetia table
+    try {
+        $sql = "SELECT * FROM urusetia";
+        $result = mysqli_query($sambungan,$sql);
+    } catch (exception $e) {
+        $sql = <<<HEREDOC
+        CREATE TABLE urusetia (
+            id INT(10) NOT NULL AUTO_INCREMENT,
+            nama_pengguna VARCHAR(30) NOT NULL,
+            kata_laluan VARCHAR(15) NOT NULL,
+            PRIMARY KEY (id)
+        )
+        HEREDOC;
+        $result = mysqli_query($sambungan,$sql);
+    }
+
     if ($_POST) {
         $nama_pengguna = $_POST["nama_pengguna"];
         $kata_laluan = $_POST["kata_laluan"];
     
+        // daftar
         if (isset($_POST["daftar"])) {
             $sql = "INSERT INTO urusetia (nama_pengguna,kata_laluan) VALUES ('$nama_pengguna','$kata_laluan')";
             $result = mysqli_query($sambungan,$sql);
-            if ($result) {
+        }
+
+        // log in
+        $sql = "SELECT * FROM urusetia";
+        $result = mysqli_query($sambungan,$sql);
+        while ($urusetia = mysqli_fetch_array($result)) {
+            if (($nama_pengguna == $urusetia["nama_pengguna"]) and ($kata_laluan == $urusetia["kata_laluan"])){
                 $_SESSION["login"] = true;
                 $_SESSION["urusetia"]["nama_pengguna"] = $nama_pengguna;
                 $_SESSION["urusetia"]["kata_laluan"] = $kata_laluan;
@@ -21,29 +44,8 @@
                 die();
             }
         }
-
-        if (isset($_POST["log_masuk"])) {
-            $sql = "SELECT * FROM urusetia";
-            $result = mysqli_query($sambungan,$sql);
-            while ($urusetia = mysqli_fetch_array($result)) {
-                if (($nama_pengguna == $urusetia["nama_pengguna"]) && ($kata_laluan == $urusetia["kata_laluan"])){
-                    $_SESSION["login"] = true;
-                    $_SESSION["urusetia"]["nama_pengguna"] = $nama_pengguna;
-                    $_SESSION["urusetia"]["kata_laluan"] = $kata_laluan;
-                    $_SESSION["urusetia"]["id"] = $urusetia["id"];
-    
-                    $_POST = array();
-                    header("Location:./info.php");
-                    die();
-                }
-                else
-                    $_POST = array();
-                    die("Tidak berjaya log masuk");
-            }
-        }
-
         $_POST = array();
-        die();
+        die("Tidak berjaya");
     }
 ?>
 

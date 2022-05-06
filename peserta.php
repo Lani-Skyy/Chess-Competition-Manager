@@ -4,6 +4,22 @@
         header("Location:./login.php");;
     include("sambungan.php");
 
+    // create peserta table
+    try {
+        $sql = "SELECT * FROM peserta";
+        $result = mysqli_query($sambungan,$sql);
+    } catch (exception $e) {
+        $sql = <<<HEREDOC
+        CREATE TABLE peserta (
+            id INT(10) NOT NULL AUTO_INCREMENT,
+            no_kp VARCHAR(15) NOT NULL,
+            nama VARCHAR(30) NOT NULL,
+            PRIMARY KEY (id)
+        )
+        HEREDOC;
+        $result = mysqli_query($sambungan,$sql);
+    }
+
     // Get all peserta
     $peserta = [];
     $sql = "SELECT * FROM peserta";

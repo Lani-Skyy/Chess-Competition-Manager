@@ -4,6 +4,21 @@
         header("Location:./login.php");
     include("sambungan.php");
 
+    // create hakim table
+    try {
+        $sql = "SELECT * FROM hakim";
+        $result = mysqli_query($sambungan,$sql);
+    } catch (exception $e) {
+        $sql = <<<HEREDOC
+        CREATE TABLE hakim (
+            id INT(10) NOT NULL AUTO_INCREMENT,
+            nama VARCHAR(30) NOT NULL,
+            PRIMARY KEY (id)
+        )
+        HEREDOC;
+        $result = mysqli_query($sambungan,$sql);
+    }
+
     // Get all hakim
     $hakim = [];
     $sql = "SELECT * FROM hakim";

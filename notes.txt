@@ -1,28 +1,28 @@
 DATABASE (TABLES)
-urusetia
-hakim
-peserta
-scores
-matches
+urusetia #COMPLETE
+hakim #COMPLETE
+peserta #COMPLETE
+scores #COMPLETE
+matches #COMPLETE
 
 PAGES
-login.php
-urusetia.php
+login.php #COMPLETE
 info.php #TODO
-hakim.php
-peserta.php
-pusingan.php # buggy
+urusetia.php #COMPLETE
+hakim.php #COMPLETE
+peserta.php #COMPLETE
+pusingan.php #BUGGY
 keputusan.php #TODO
 
 COMPONENTS
-styles.css
-head.php
-header.php
-navbar_1.php
-navbar_2.php
-sambungan.php
-log_keluar.php
-algorithm.php
+styles.css #TODO
+head.php #COMPLETE
+header.php #COMPLETE
+navbar_1.php #COMPLETE
+navbar_2.php #COMPLETE
+sambungan.php #COMPLETE
+log_keluar.php #COMPLETE
+algorithm.php #COMPLETE
 
 EXTRA
 echo "<pre>", var_dump($data), "</pre>";

@@ -26,7 +26,7 @@ This system is very lacking in error checking, if you use it the way you're supp
 - urusetia.php #COMPLETE
 - hakim.php #COMPLETE
 - peserta.php #COMPLETE
-- pusingan.php #BUGGY
+- pusingan.php #COMPLETE
 - keputusan.php #COMPLETE
 
 ### COMPONENTS

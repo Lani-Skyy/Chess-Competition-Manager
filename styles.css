@@ -79,3 +79,10 @@ thead {
     color: var(--ltext);
     background-color: var(--dark2);
 }
+
+.centered-content {
+    left: 50%;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -55%);
+}

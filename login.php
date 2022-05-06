@@ -56,20 +56,20 @@
     <header>
         <?php include("navbar_1.php") ?>
     </header>
-    <div>
+    <div class="center centered-content">
         <form action="login.php" method="post">
-            <table>
+            <table class="table table-bordered" style="width:60%;margin:auto;">
                 <tr>
                     <td>Nama Pengguna</td>
-                    <td><input type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters" required></td>
+                    <td><input style="width:80%" class="text-center" type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters" required></td>
                 </tr>
                 <tr>
                     <td>Kata Laluan</td>
-                    <td><input type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters" required></td>
+                    <td><input style="width:80%" class="text-center" type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters" required></td>
                 </tr>
             </table>
-            <input type="submit" name="daftar" value="Daftar">
-            <input type="submit" name="log_masuk" value="Log Masuk">
+            <input style="margin-top:2%;" type="submit" name="daftar" value="Daftar">
+            <input style="margin-top:2%;" type="submit" name="log_masuk" value="Log Masuk">
         </form>
     </div>
 </body>

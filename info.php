@@ -14,7 +14,7 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center">
+    <div class="center centered-content">
         <h2>Info</h2>
         <h3>Cara Penggunaan:</h3>
         <ol>

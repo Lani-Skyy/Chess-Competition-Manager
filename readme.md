@@ -16,5 +16,11 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 
 ## Screenshots
 ![alt text](screenshots/login.png)
+![alt text](screenshots/info.png)
+![alt text](screenshots/hakim.png)
+![alt text](screenshots/peserta_sebelum.png)
+![alt text](screenshots/peserta_selepas.png)
 ![alt text](screenshots/pusingan_sebelum.png)
+![alt text](screenshots/pusingan_selepas.png)
 ![alt text](screenshots/keputusan.png)
+![alt text](screenshots/urusetia.png)

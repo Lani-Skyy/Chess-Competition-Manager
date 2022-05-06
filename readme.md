@@ -4,7 +4,8 @@ SPPC ialah sebuah program untuk menguruskan pertandingan catur (sistem round rob
 
 ## Installation
 
-Untuk menggunakan program ini, terlebih dahulu, sebuah database perlu dicipta. Di sambungan.php, tolong tukarkan nama database dari 'pertandingan' kepada nama database dicipta.
+1. Cipta sebuah database.
+2. Di sambungan.php, tukarkan nama database dari 'pertandingan' kepada nama database dicipta.
 
 ## Incomplete
 - Pengiraan skor

@@ -57,6 +57,7 @@
         <?php include("navbar_1.php") ?>
     </header>
     <div class="center centered-content">
+        <h2>Login</h2>
         <form action="login.php" method="post">
             <table class="table table-bordered" style="width:60%;margin:auto;">
                 <tr>

@@ -42,7 +42,6 @@
             $sql = "DELETE FROM peserta";
             $result = mysqli_query($sambungan,$sql);
 
-            // Problem: Unorthodox
             try {
                 $sql = "DROP TABLE matches";
                 $result = mysqli_query($sambungan,$sql);

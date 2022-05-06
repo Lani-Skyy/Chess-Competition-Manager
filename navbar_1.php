@@ -8,7 +8,6 @@
             <!-- Title -->
             <a class="navbar-brand px-3" href="./hakim.php">SISTEM PENGURUSAN PERTANDINGAN CATUR</a>
             <!-- Akaun -->
-            <!-- Problem: Appears when logged out -->
             <li class="nav-item dropdown px-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Akaun</a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">

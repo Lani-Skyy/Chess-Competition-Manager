@@ -55,7 +55,6 @@
         $num_games = sizeof($games);
         $r = $col["$round"];
 
-        // matches
         try {
             $sql = "SELECT * FROM matches";
             $result = mysqli_query($sambungan,$sql);
@@ -119,7 +118,7 @@
             }
         }
 
-        // submit
+        // Submit
         if (isset($_POST["submit"])) {
             for ($i=0; $i<sizeof($_POST); $i++) {
                 $key = array_keys($_POST)[$i];
@@ -142,7 +141,7 @@
             $_POST = NULL;
         }
 
-        // clear
+        // Clear
         if (isset($_POST["clear"])){
             try {
                 $sql = <<<HEREDOC
@@ -154,7 +153,7 @@
             $_POST = NULL;
         }
 
-        // reset
+        // Reset
         if (isset($_POST["reset"])){
             try {
                 $sql = "DROP TABLE scores";
@@ -225,7 +224,6 @@
                         HEREDOC;
                         echo $string;
 
-                        // start
                         foreach($games AS $play){
                             $w = array_search($play["Home"],$peserta_id,true);
                             $b = array_search($play["Away"],$peserta_id,true);

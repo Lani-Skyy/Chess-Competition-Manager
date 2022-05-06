@@ -16,7 +16,7 @@
             $mode = substr($mode, 7, );
             $string = $_POST["$mode"];
 
-            // error checking
+            // Error Checking
             if ($string == "") {
                 $_POST = array();
                 die("Tolong berikan $mode.");

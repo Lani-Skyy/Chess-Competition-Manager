@@ -36,7 +36,7 @@
     if ($_POST) {
         // Create
         if (array_search('create', $_POST)) {
-            // error checking
+            // Error Checking
             if ($_POST['insert'] == "") {
                 $_POST = array();
                 die("Tolong isikan nama hakim.");
@@ -63,7 +63,7 @@
         }
         // Update
         if (array_search('update', $_POST)) {
-            // error checking
+            // Error Checking
             if ($_POST['insert'] == "") {
                 $_POST = array();
                 die("Tolong isikan nama hakim.");
@@ -98,7 +98,6 @@
     }
 ?>
 
-<!-- Problem: Display hakim id -->
 <!DOCTYPE html>
 <html>
 <?php include("head.php") ?>

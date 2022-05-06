@@ -36,6 +36,7 @@
                 if ($is_peserta) {
                     $string = <<<HEREDOC
                     <tr>
+                        <td>Kedudukan</td>
                         <td>Id</td>
                         <td>No. KP</td>
                         <td>Nama</td>
@@ -50,8 +51,6 @@
                         $num_col = mysqli_num_fields($result)-1;
                         while ($array = mysqli_fetch_array($result)) {
                             $id = $array["id_peserta"];
-                            $no_kp = $peserta[$id]["no_kp"];
-                            $nama = $peserta[$id]["nama"];
                             $skor = 0;
                             for ($i=1;$i<$num_col+1;$i++) {
                                 $r = "r$i";
@@ -59,12 +58,19 @@
                                     $skor = $skor + floatval($array[$r]);
                                 }
                             }
+                            $scores[$id] = $skor;
+                        }
+                        arsort($scores);
+                        foreach (array_keys($scores) as $id) {
+                            $score = $scores[$id];
+                            $no_kp = $peserta["$id"]["no_kp"];
+                            $nama = $peserta["$id"]["nama"];
                             $string = <<<HEREDOC
                             <tr>
                                 <td>$id</td>
                                 <td>$no_kp</td>
                                 <td>$nama</td>
-                                <td>$skor</td>
+                                <td>$score</td>
                             <tr>
                             HEREDOC;
                             echo $string;

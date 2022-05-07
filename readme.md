@@ -16,30 +16,29 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 
 ## Progress
 ### DATABASE (TABLES)
-- urusetia #COMPLETE
-- hakim #COMPLETE
-- peserta #COMPLETE
-- scores #COMPLETE
-- matches #COMPLETE
+- urusetia
+- hakim
+- peserta
+- scores
+- matches
 
 ### PAGES
-- login.php #COMPLETE #CHECKED
-- info.php #COMPLETE
-- urusetia.php #COMPLETE #CHECKED
-- hakim.php #COMPLETE #CHECKED
-- peserta.php #COMPLETE #CHECKED
-- pusingan.php #COMPLETE #CHECKED
-- keputusan.php #COMPLETE #CHECKED
+- login.php
+- info.php
+- urusetia.php
+- hakim.php
+- peserta.php
+- pusingan.php
+- keputusan.php
 
 ### COMPONENTS
-- styles.css #COMPLETE
-- head.php #COMPLETE
-- header.php #COMPLETE
-- navbar_1.php #COMPLETE
-- navbar_2.php #COMPLETE
-- sambungan.php #COMPLETE
-- log_keluar.php #COMPLETE
-- algorithm.php #COMPLETE
+- styles.css
+- head.php
+- navbar_1.php
+- navbar_2.php
+- sambungan.php
+- log_keluar.php
+- algorithm.php
 
 ## Screenshots
 ![alt text](screenshots/login.png)

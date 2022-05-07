@@ -14,15 +14,15 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 4. In sambungan.php, change the database name to the name of the database you created earlier. ```$database = 'database_name';```
 5. Go to login.php through localhost in your browser. ```localhost/folder_name/login.php```
 
-## COMPONENTS
-### DATABASE TABLES (automatically created)
+## Components
+### Database Tables (automatically created)
 - urusetia
 - hakim
 - peserta
 - scores
 - matches
 
-### PAGES
+### Pages
 - login.php
 - info.php
 - urusetia.php
@@ -31,7 +31,7 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 - pusingan.php
 - keputusan.php
 
-### COMPONENTS
+### Components
 - styles.css
 - head.php
 - navbar_1.php

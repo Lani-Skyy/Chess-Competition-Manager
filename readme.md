@@ -2,9 +2,7 @@
 
 SPPC is a program to manage chess competitions (round robin). The system language is Malay.
 
-## Installation
-❗ xampp is required
-
+## Installation (using xampp)
 ⚠️ path and url can differ based on operating system
 
 1. Start xampp.

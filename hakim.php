@@ -53,7 +53,6 @@
             if (array_search('create', $_POST)) {
                 // Error Checking
                 if (in_array($_POST['insert'],$not_allowed)) {
-                    $_POST = NULL;
                     echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
                 } else {
                     $string = $_POST['insert'];
@@ -82,7 +81,6 @@
             if (array_search('update', $_POST)) {
                 // Error Checking
                 if (in_array($_POST['insert'],$not_allowed)) {
-                    $_POST = NULL;
                     echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
                 } else {
                     $new_nama = $_POST['insert'];

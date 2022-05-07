@@ -37,11 +37,11 @@
                     $string = <<<HEREDOC
                     <thead>
                         <tr>
-                            <td>Kedudukan</td>
-                            <td>Id</td>
-                            <td>No. KP</td>
+                            <td style="width:15%">Kedudukan</td>
+                            <td style="width:15%">Id</td>
+                            <td style="width:15%">No. KP</td>
                             <td>Nama</td>
-                            <td>Skor</td>
+                            <td style="width:15%">Skor</td>
                         <tr>
                     </thead>
                     HEREDOC;

@@ -138,7 +138,7 @@
                     // if have peserta
                     else {
                         $string = <<<HEREDOC
-                        <input type="submit" name="reset" value="reset" style="width: 20%;"></td>
+                        <input type="submit" name="reset" value="reset" style="width: 100%;"></td>
                         <thead>
                             <tr>
                                 <td>Id</td>

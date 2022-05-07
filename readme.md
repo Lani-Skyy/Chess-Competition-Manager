@@ -10,12 +10,12 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 1. Start xampp.
 2. Save and unzip this folder in ```C:/xampp/htdocs/``` 
     - Additionally, you can move the inner folder to htdocs, then rename it to something shorter
-3. Create a database in phpMyAdmin through localhost in your browser ```http://localhost/phpmyadmin/```
+3. Create a database (collation: utf8mb4_general_ci) in phpMyAdmin through localhost in your browser ```http://localhost/phpmyadmin/```
 4. In sambungan.php, change the database name to the name of the database you created earlier. ```$database = 'database_name';```
 5. Go to login.php through localhost in your browser. ```localhost/folder_name/login.php```
 
-## Progress
-### DATABASE (TABLES)
+## COMPONENTS
+### DATABASE TABLES (automatically created)
 - urusetia
 - hakim
 - peserta
@@ -41,12 +41,11 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 - algorithm.php
 
 ## Screenshots
-![alt text](screenshots/login.png)
-![alt text](screenshots/info.png)
-![alt text](screenshots/hakim.png)
-![alt text](screenshots/peserta_sebelum.png)
-![alt text](screenshots/peserta_selepas.png)
-![alt text](screenshots/pusingan_sebelum.png)
-![alt text](screenshots/pusingan_selepas.png)
-![alt text](screenshots/keputusan.png)
-![alt text](screenshots/urusetia.png)
+![login](screenshots/login.png)
+![hakim](screenshots/hakim.png)
+![peserta_sebelum](screenshots/peserta_sebelum.png)
+![peserta_selepas](screenshots/peserta_selepas.png)
+![pusingan_sebelum](screenshots/pusingan_sebelum.png)
+![pusingan_selepas](screenshots/pusingan_selepas.png)
+![keputusan](screenshots/keputusan.png)
+![urusetia](screenshots/urusetia.png)

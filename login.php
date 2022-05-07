@@ -57,12 +57,12 @@
         <?php include("navbar_1.php") ?>
     </header>
     <div class="center centered-content" style="width:60%;margin:auto;">
+        <h2>Login</h2>
         <?php
             if (isset($_SESSION["login"]) and $_SESSION["login"] == false) {
                 echo "<div class='alert alert-danger'>Tidak berjaya log masuk.</div>";
             }
         ?>
-        <h2>Login</h2>
         <form action="login.php" method="post">
             <table class="table table-bordered" >
                 <tr>

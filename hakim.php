@@ -44,6 +44,7 @@
         ?>
     </header>
     <div class="center centered-content" style="width:60%;margin:auto;">
+        <h2>Hakim</h2>
     <?php
         // Check user input
         if ($_POST) {
@@ -112,7 +113,6 @@
             $_POST = NULL;
         }
     ?>
-        <h2>Hakim</h2>
         <form action="hakim.php" method="post">
             <table class="table table-bordered" >
                 <thead>

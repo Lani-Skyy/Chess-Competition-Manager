@@ -1,5 +1,5 @@
-# Sistem Pengurusan Pertandingan Catur (SPPC) [![Open Source Love](https://firstcontributions.github.io/open-source-badges/badges/open-source-v1/open-source.svg)](https://github.com/firstcontributions/open-source-badges)
-
+# Sistem Pengurusan Pertandingan Catur (SPPC)
+ [![Open Source Love](https://firstcontributions.github.io/open-source-badges/badges/open-source-v1/open-source.svg)](https://github.com/firstcontributions/open-source-badges) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 SPPC is a program to manage chess competitions (round robin). The system language is Malay.
 

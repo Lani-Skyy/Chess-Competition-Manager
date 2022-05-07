@@ -31,71 +31,6 @@
             ];
         }
     }
-
-    // Check user input
-    if ($_POST) {
-        // Create
-        if (array_search('create', $_POST)) {
-            // Error Checking
-            if ($_POST['insert'] == "") {
-                $_POST = array();
-                die("Tolong isikan nama hakim.");
-            }
-
-            $string = $_POST['insert'];
-            $sql = "INSERT INTO hakim (nama) VALUES ('$string')";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_POST = array();
-                header("Location:./hakim.php");
-                die();
-            }
-        }
-        // Reset
-        if (array_search('reset', $_POST)) {
-            $sql = "DELETE FROM hakim";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_POST = array();
-                header("Location:./hakim.php");
-                die();
-            }
-        }
-        // Update
-        if (array_search('update', $_POST)) {
-            // Error Checking
-            if ($_POST['insert'] == "") {
-                $_POST = array();
-                die("Tolong isikan nama hakim.");
-            }
-
-            $new_nama = $_POST['insert'];
-            $index = substr(array_search('update', $_POST), 7, );
-            $hakim_id = $hakim[$index]["id"];
-            $sql = "UPDATE hakim SET nama = '$new_nama' WHERE id = $hakim_id";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_POST = array();
-                header("Location:./hakim.php");
-                die();
-            }
-        }
-        // Delete
-        if (array_search('delete', $_POST)) {
-            $index = substr(array_search('delete', $_POST), 7, );
-            $hakim_id = $hakim[$index]["id"];
-            $sql = "DELETE FROM hakim WHERE id = $hakim_id";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_POST = array();
-                header("Location:./hakim.php");
-                die();
-            }
-        }
-
-        $_POST = array();
-        die();
-    }
 ?>
 
 <!DOCTYPE html>
@@ -108,21 +43,85 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center centered-content">
+    <div class="center centered-content" style="width:60%;margin:auto;">
+    <?php
+        // Check user input
+        if ($_POST) {
+            $not_allowed = [""," ","NULL"];
+
+            // Create
+            if (array_search('create', $_POST)) {
+                // Error Checking
+                if (in_array($_POST['insert'],$not_allowed)) {
+                    $_POST = NULL;
+                    echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
+                } else {
+                    $string = $_POST['insert'];
+                    $sql = "INSERT INTO hakim (nama) VALUES ('$string')";
+                    $result = mysqli_query($sambungan,$sql);
+                    if ($result) {
+                        $_POST = NULL;
+                        header("Location:./hakim.php");
+                        die();
+                    }
+                }
+            }
+
+            // Reset
+            if (array_search('reset', $_POST)) {
+                $sql = "DELETE FROM hakim";
+                $result = mysqli_query($sambungan,$sql);
+                if ($result) {
+                    $_POST = NULL;
+                    header("Location:./hakim.php");
+                    die();
+                }
+            }
+
+            // Update
+            if (array_search('update', $_POST)) {
+                // Error Checking
+                if (in_array($_POST['insert'],$not_allowed)) {
+                    $_POST = NULL;
+                    echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
+                } else {
+                    $new_nama = $_POST['insert'];
+                    $index = substr(array_search('update', $_POST), 7, );
+                    $hakim_id = $hakim[$index]["id"];
+                    $sql = "UPDATE hakim SET nama = '$new_nama' WHERE id = $hakim_id";
+                    $result = mysqli_query($sambungan,$sql);
+                    if ($result) {
+                        $_POST = NULL;
+                        header("Location:./hakim.php");
+                        die();
+                    }
+                }
+            }
+
+            // Delete
+            if (array_search('delete', $_POST)) {
+                $index = substr(array_search('delete', $_POST), 7, );
+                $hakim_id = $hakim[$index]["id"];
+                $sql = "DELETE FROM hakim WHERE id = $hakim_id";
+                $result = mysqli_query($sambungan,$sql);
+                if ($result) {
+                    $_POST = NULL;
+                    header("Location:./hakim.php");
+                    die();
+                }
+            }
+
+            $_POST = NULL;
+        }
+    ?>
         <h2>Hakim</h2>
         <form action="hakim.php" method="post">
-            <table class="table table-bordered" style="width:70%;margin:auto;">
+            <table class="table table-bordered" >
                 <thead>
                     <tr>
-                        <td>
-                            <input style="width:80%" class="text-center" type="text" name="insert" autocomplete="off" placeholder="taip sini" style="width:60%">
-                        </td>
-                        <td>
-                            <input type="submit" name="create" value="create">
-                        </td>
-                        <td>
-                            <input type="submit" name="reset" value="reset">
-                        </td>
+                        <td><input style="width:80%" class="text-center" type="text" name="insert" autocomplete="off" autofocus placeholder="taip sini"></td>
+                        <td><input type="submit" name="create" value="create"></td>
+                        <td><input type="submit" name="reset" value="reset"></td>
                     </tr>
                 </thead>
                 <tbody>

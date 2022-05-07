@@ -83,9 +83,9 @@
                         }
                     } catch (Exception $e) {}
 
-                    echo "<tbody>";
+                    echo "</tbody>";
                 } else {
-                    echo "Tolong daftarkan peserta";
+                    echo "<div class='alert alert-warning'>Tolong daftarkan peserta.</div>";
                 }
             ?>
         </table>

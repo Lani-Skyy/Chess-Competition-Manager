@@ -18,13 +18,13 @@
         <h2>Info</h2>
         <h3>Cara Penggunaan:</h3>
         <ol>
-            <li>daftar atau login urusetia</li>
-            <li>daftarkan hakim</li>
-            <li>daftarkan peserta</li>
-            <li>janakan pusingan seterusnya</li>
-            <li>rekodkan keputusan pusingan tersebut</li>
-            <li>ulang sampai semua pusingan habis</li>
-            <li>dapatkan keputusan akhir</li>
+            <li>Daftar atau login urusetia.</li>
+            <li>Daftarkan hakim.</li>
+            <li>Daftarkan peserta.</li>
+            <li>Janakan pusingan seterusnya.</li>
+            <li>Rekodkan keputusan pusingan tersebut.</li>
+            <li>Ulang sampai semua pusingan habis.</li>
+            <li>Dapatkan keputusan akhir.</li>
         </ol>
         <h6 style="text-decoration:overline; ">Lanisha Anusri</h6>
     </div>

@@ -1,7 +1,6 @@
 <?php
     session_start();
     include("sambungan.php");
-    $_SESSION["login"] = false;
 
     // create urusetia table
     try {
@@ -19,6 +18,7 @@
         $result = mysqli_query($sambungan,$sql);
     }
 
+    unset($_SESSION["login"]);
     if ($_POST) {
         $nama_pengguna = $_POST["nama_pengguna"];
         $kata_laluan = $_POST["kata_laluan"];
@@ -39,13 +39,13 @@
                 $_SESSION["urusetia"]["kata_laluan"] = $kata_laluan;
                 $_SESSION["urusetia"]["id"] = $urusetia["id"];
 
-                $_POST = array();
+                $_POST = NULL;
                 header("Location:./info.php");
                 die();
             }
         }
-        $_POST = array();
-        die("Tidak berjaya");
+        $_SESSION["login"] = false;
+        $_POST = NULL;
     }
 ?>
 
@@ -56,10 +56,15 @@
     <header>
         <?php include("navbar_1.php") ?>
     </header>
-    <div class="center centered-content">
+    <div class="center centered-content" style="width:60%;margin:auto;">
+        <?php
+            if (isset($_SESSION["login"]) and $_SESSION["login"] == false) {
+                echo "<div class='alert alert-danger'>Tidak berjaya log masuk.</div>";
+            }
+        ?>
         <h2>Login</h2>
         <form action="login.php" method="post">
-            <table class="table table-bordered" style="width:60%;margin:auto;">
+            <table class="table table-bordered" >
                 <tr>
                     <td>Nama Pengguna</td>
                     <td><input style="width:80%" class="text-center" type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters" required></td>

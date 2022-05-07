@@ -8,45 +8,6 @@
     $nama_pengguna = $_SESSION["urusetia"]["nama_pengguna"];
     $kata_laluan = $_SESSION["urusetia"]["kata_laluan"];
     $id = $_SESSION["urusetia"]["id"];
-
-    if ($_POST) {
-        // Update
-        if (array_search('update', $_POST)) {
-            $mode = array_search('update', $_POST);
-            $mode = substr($mode, 7, );
-            $string = $_POST["$mode"];
-
-            // Error Checking
-            if ($string == "") {
-                $_POST = array();
-                die("Tolong berikan $mode.");
-            }
-
-            $sql = "UPDATE urusetia SET $mode = '$string' WHERE id = $id";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_SESSION["urusetia"]["$mode"] = $string;
-
-                $_POST = array();
-                header("Location:./urusetia.php");
-                die();
-            }
-        }
-
-        // Delete
-        if (array_search('delete', $_POST)) {
-            $sql = "DELETE FROM urusetia WHERE id = $id";
-            $result = mysqli_query($sambungan,$sql);
-            if ($result) {
-                $_POST = array();
-                header("Location:./login.php");
-                die();
-            }
-        }
-
-        $_POST = array();
-        die();
-    }
 ?>
 
 <!DOCTYPE html>
@@ -59,31 +20,57 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center centered-content">
+    <div class="center centered-content" style="width:70%;margin:auto;">
         <h2>Urusetia</h2>
+        <?php
+            if ($_POST) {
+                // Update
+                if (array_search('update', $_POST)) {
+                    $mode = array_search('update', $_POST);
+                    $mode = substr($mode, 7, );
+                    $string = $_POST["$mode"];
+        
+                    // Error Checking
+                    if ($string == "") {
+                        echo "<div class='alert alert-warning'>Tolong berikan $mode.</div>";
+                    } else {
+                        $sql = "UPDATE urusetia SET $mode = '$string' WHERE id = $id";
+                        $result = mysqli_query($sambungan,$sql);
+                        if ($result) {
+                            $_SESSION["urusetia"]["$mode"] = $string;
+            
+                            $_POST = NULL;
+                            header("Location:./urusetia.php");
+                            die();
+                        }
+                    }
+                }
+        
+                // Delete
+                if (array_search('delete', $_POST)) {
+                    $sql = "DELETE FROM urusetia WHERE id = $id";
+                    $result = mysqli_query($sambungan,$sql);
+                    if ($result) {
+                        $_POST = NULL;
+                        header("Location:./login.php");
+                        die();
+                    }
+                }
+
+                $_POST = NULL;
+            }
+        ?>
         <form action="urusetia.php" method="post">
-            <table class="table table-bordered" style="width:70%;margin:auto;">
+            <table class="table table-bordered">
                 <tr>
                     <td style="width:10%;color: var(--ltext);background-color: var(--dark2);">Id</td>
                     <td style="color: var(--ltext);background-color: var(--dark2);">Nama Pengguna</td>
                     <td style="color: var(--ltext);background-color: var(--dark2);">Kata Laluan</td>
                 </tr>
                 <tr>
-                     <td>
-                        <?php
-                            echo "$id";
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                            echo "$nama_pengguna";
-                        ?>
-                    </td>
-                    <td>
-                        <?php
-                            echo "$kata_laluan";
-                        ?>
-                    </td>
+                    <td><?php echo "$id";?></td>
+                    <td><?php echo "$nama_pengguna";?></td>
+                    <td><?php echo "$kata_laluan";?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -96,7 +83,7 @@
                     <td><input type="submit" name="update_kata_laluan" value="update"></td>
                 </tr>
             </table>
-            <input style="margin-top:1%;" type="submit" name="delete" value="delete">
+            <input style="margin-top:0.5%;" type="submit" name="delete" value="delete">
         </form>
     </div>
 </body>

@@ -4,7 +4,7 @@
         header("Location:./login.php");;
     include("sambungan.php");
 
-    // create peserta table
+    // Create peserta table
     try {
         $sql = "SELECT * FROM peserta";
         $result = mysqli_query($sambungan,$sql);
@@ -20,6 +20,66 @@
         $result = mysqli_query($sambungan,$sql);
     }
 
+    // Check user input
+    if ($_POST) {
+        // Reset
+        if (isset($_POST["reset"])) {
+            $sql = "DELETE FROM peserta";
+            $result = mysqli_query($sambungan,$sql);
+            try {
+                $sql = "DROP TABLE matches";
+                $result = mysqli_query($sambungan,$sql);
+            } catch (Exception $e) {}
+            try {
+                $sql = "DROP TABLE scores";
+                $result = mysqli_query($sambungan,$sql);
+            } catch (Exception $e) {}
+            $_POST = NULL;
+            header("Location:./peserta.php");
+            die();
+        }
+
+        // Add Peserta 
+        // Problem: Inserts valid input when invalid input exists among valid input
+        if (isset($_POST["submit"])) {
+            $not_allowed = [""," ","NULL"];
+            // Error Checking
+            if (in_array($_POST['peserta'],$not_allowed))
+                $error = true;
+
+            // Conversion of input string to arrays of peserta
+            $string = $_POST["peserta"];
+            $string = trim($string);
+            $crlf = chr(13).chr(10);
+            $string = explode("$crlf",$string);
+
+            for ($i=0; $i<sizeof($string); $i++) {
+                $error = false;
+                $string1 = $string[$i];
+                // Error Checking
+                if (!isset(explode(",",$string1)[0]) or !isset(explode(",",$string1)[1]))
+                    $error = true;
+                else if ($error == false) {
+                    $no_kp = trim(explode(",",$string1)[0]);
+                    $nama = trim(explode(",",$string1)[1]);
+    
+                    // Error Checking
+                    if (in_array($no_kp,$not_allowed) or in_array($nama,$not_allowed))
+                        $error = true;
+                    
+                    if ($error == false) {
+                        // Insert peserta 
+                        $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
+                        $result = mysqli_query($sambungan,$sql);
+                        $inserted = true;
+                    }
+                }
+            }
+        }
+
+        $_POST = NULL;
+    }
+
     // Get all peserta
     $peserta = [];
     $sql = "SELECT * FROM peserta";
@@ -30,90 +90,11 @@
                 "id" => $array["id"],
                 "no_kp" => $array["no_kp"],
                 "nama" => $array["nama"]
-                ];
+            ];
         }
     }
-    
-    // Check user input
-    if ($_POST) {
-
-        // Reset
-        if (isset($_POST["reset"])) {
-            $sql = "DELETE FROM peserta";
-            $result = mysqli_query($sambungan,$sql);
-
-            try {
-                $sql = "DROP TABLE matches";
-                $result = mysqli_query($sambungan,$sql);
-            } catch (Exception $e) {
-            }
-            try {
-                $sql = "DROP TABLE scores";
-                $result = mysqli_query($sambungan,$sql);
-            } catch (Exception $e) {
-            }
-
-            $_POST = array();
-            header("Location:./peserta.php");
-            die();
-        }
-
-        // Add Peserta
-        if (isset($_POST["submit"])) {
-            // Error Checking: If no input
-            if ($_POST['peserta'] == "") {
-                $_POST = array();
-                die("Tolong isikan peserta.");
-            }
-
-            // Conversion of input string to arrays of peserta
-            $string = $_POST["peserta"];
-            $string = trim($string);
-            $crlf = chr(13).chr(10);
-            $string = explode("$crlf",$string);
-
-            // For each peserta
-            for ($i=0; $i<sizeof($string); $i++) {
-                $string1 = $string[$i];
-
-                // Error Checking: If no no_kp or nama
-                if (!isset(explode(",",$string1)[0]) or !isset(explode(",",$string1)[1])) {
-                    $_POST = array();
-                    die("Tolong isikan kedua-dua no_kp dan nama");
-                }
-
-                $no_kp = trim(explode(",",$string1)[0]);
-                $nama = trim(explode(",",$string1)[1]);
-
-                // Error Checking: Both no_kp and nama are empty
-                if ($no_kp == "" and $nama == "") {
-                    $_POST = array();
-                    die("Tolong jangan biarkan kedua-dua no_kp dan nama kosong"); // Problem: Loop continues, valid values are inserted into database.
-                }
-                
-                $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
-                $result = mysqli_query($sambungan,$sql);
-
-                // Get all peserta
-                $peserta = [];
-                $sql = "SELECT * FROM peserta";
-                $result = mysqli_query($sambungan,$sql);
-                if ($result) {
-                    while ($array = mysqli_fetch_array($result)) {
-                        $peserta[] = [
-                            "id" => $array["id"],
-                            "no_kp" => $array["no_kp"],
-                            "nama" => $array["nama"]
-                            ];
-                    }
-                }
-            }
-
-            $_POST = array();
-            header("Location:./peserta.php");
-            die();
-        }
-        $_POST = array();
+    if (isset($inserted)) {
+        header("Location:./peserta.php");
         die();
     }
 ?>
@@ -128,10 +109,10 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center">
+    <div class="center" style="width:50%;margin:auto;">
         <h2>Peserta</h2>
         <form action="peserta.php" method="post">
-            <table class="table table-bordered" style="width:80%;margin:auto;">
+            <table class="table table-bordered">
                 <?php
                     // if no peserta
                     if (sizeof($peserta) == 0) {
@@ -144,7 +125,7 @@
                         $string = <<<HEREDOC
                         <tr>
                             <td>
-                                <textarea rows = "10" cols = "60" name="peserta" autocomplete="off" placeholder="$format" required></textarea>
+                                <textarea autofocus rows = "10" cols = "60" name="peserta" autocomplete="off" placeholder="$format"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -154,7 +135,7 @@
                         echo $string;
                     }
 
-                    // if got peserta
+                    // if have peserta
                     else {
                         $string = <<<HEREDOC
                         <input type="submit" name="reset" value="reset" style="width: 20%;"></td>
@@ -165,7 +146,6 @@
                                 <td>Nama</td>
                             </tr>
                         </thead>
-
                         HEREDOC;
                         echo $string;
 

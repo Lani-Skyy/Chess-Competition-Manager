@@ -23,13 +23,13 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 - matches #COMPLETE
 
 ### PAGES
-- login.php #COMPLETE
+- login.php #COMPLETE #CHECKED
 - info.php #COMPLETE
-- urusetia.php #COMPLETE
-- hakim.php #COMPLETE
-- peserta.php #COMPLETE
-- pusingan.php #COMPLETE
-- keputusan.php #COMPLETE
+- urusetia.php #COMPLETE #CHECKED
+- hakim.php #COMPLETE #CHECKED
+- peserta.php #COMPLETE #CHECKED
+- pusingan.php #COMPLETE #CHECKED
+- keputusan.php #COMPLETE #CHECKED
 
 ### COMPONENTS
 - styles.css #COMPLETE

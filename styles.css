@@ -3,22 +3,16 @@
     --dark2: #373737;
     --ltext: #f8f9fa;
     --accent: #3a015c; */
-    --dark1: #514555;
-    --dark2: #6C5C71;
+    --dark1: #243b53;
+    --dark2: #334e68;
     --ltext: #f8f9fa;
     --dtext: rgb(25, 25, 25);
-    --accent: #33427E;
+    --accent: #2e5581;
   }
 
 body {
     font-size: 1.3rem;
     text-align:center;
-}
-
-.center {
-    margin: auto;
-    width: 80%;
-    padding-top:2%;
 }
 
 h2 {
@@ -35,6 +29,7 @@ input[type=submit] {
     color: var(--ltext);
     border-radius: 7px;
     min-width: 100px;
+    border-color:grey;
 }
 
 ol { 
@@ -85,4 +80,10 @@ thead {
     position: absolute;
     top: 45%;
     transform: translate(-50%, -55%);
+}
+
+.center {
+    margin: auto;
+    width: 80%;
+    padding-top:2%;
 }

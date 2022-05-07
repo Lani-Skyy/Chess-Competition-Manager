@@ -21,7 +21,7 @@
     $is_peserta = isset($peserta_id);
 
     if ($is_peserta) {
-        @$schedule = scheduler($peserta_id); // Problem: Unorthodox
+        @$schedule = scheduler($peserta_id);
         $num_rounds = sizeof($schedule);
 
         if (isset($_POST["round"])) {
@@ -148,8 +148,7 @@
                 UPDATE scores SET $r = "NULL"
                 HEREDOC;
                 $result = mysqli_query($sambungan,$sql);
-            } catch (Exception $e) {
-            }
+            } catch (Exception $e) {}
             $_POST = NULL;
         }
 
@@ -158,8 +157,7 @@
             try {
                 $sql = "DROP TABLE scores";
                 $result = mysqli_query($sambungan,$sql);
-            } catch (Exception $e) {
-            }
+            } catch (Exception $e) {}
             $_POST = NULL;
             unset($_SESSION["round"]);
             $round = "0";
@@ -196,7 +194,7 @@
                                 echo $string;
                             }
                         } else {
-                            echo "Tolong daftarkan peserta";
+                            echo "<div class='alert alert-warning'>Tolong daftarkan peserta.</div>";
                         }
                     ?>
                 </tr>

@@ -18,7 +18,10 @@
         $result = mysqli_query($sambungan,$sql);
     }
 
-    unset($_SESSION["login"]);
+    if (isset($_SESSION["login"])) {
+        unset($_SESSION["login"]);
+    }
+
     if ($_POST) {
         $nama_pengguna = $_POST["nama_pengguna"];
         $kata_laluan = $_POST["kata_laluan"];

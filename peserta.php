@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SESSION["login"] == false)
-        header("Location:./login.php");;
+        header("Location:./login.php");
     include("sambungan.php");
 
     // Create peserta table

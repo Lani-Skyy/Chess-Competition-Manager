@@ -3,6 +3,7 @@
     if ($_SESSION["login"] == false)
         header("Location:./login.php");;
     include("sambungan.php");
+    include("functions.php");
 
     // Get all peserta
     try {
@@ -17,6 +18,11 @@
         }
     } catch (Exception $e) {}
     $is_peserta = isset($peserta);
+
+    if (!$is_peserta) {
+        $_SESSION["alert"]["message"] = "Tolong daftarkan peserta.";
+        $_SESSION["alert"]["type"] = "warning";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +37,7 @@
     </header>
     <div class="center">
         <h2>Keputusan</h2>
+        <?php alert() ?>
         <table class="table table-bordered">
             <?php
                 if ($is_peserta) {
@@ -82,10 +89,7 @@
                             $i++;
                         }
                     } catch (Exception $e) {}
-
                     echo "</tbody>";
-                } else {
-                    echo "<div class='alert alert-warning'>Tolong daftarkan peserta.</div>";
                 }
             ?>
         </table>

@@ -1,6 +1,11 @@
 <?php
     session_start();
     include("sambungan.php");
+    include("functions.php");
+
+    if (isset($_SESSION["login"])) {
+        unset($_SESSION["login"]);
+    }
 
     // create urusetia table
     try {
@@ -18,10 +23,6 @@
         $result = mysqli_query($sambungan,$sql);
     }
 
-    if (isset($_SESSION["login"])) {
-        unset($_SESSION["login"]);
-    }
-
     if ($_POST) {
         $nama_pengguna = $_POST["nama_pengguna"];
         $kata_laluan = $_POST["kata_laluan"];
@@ -30,6 +31,8 @@
         if (isset($_POST["daftar"])) {
             $sql = "INSERT INTO urusetia (nama_pengguna,kata_laluan) VALUES ('$nama_pengguna','$kata_laluan')";
             $result = mysqli_query($sambungan,$sql);
+            $_SESSION["alert"]["message"] = "Berjaya daftar.";
+            $_SESSION["alert"]["type"] = "success";
         }
 
         // log in
@@ -42,12 +45,19 @@
                 $_SESSION["urusetia"]["kata_laluan"] = $kata_laluan;
                 $_SESSION["urusetia"]["id"] = $urusetia["id"];
 
+                if (isset($_POST["log_masuk"])) {
+                    $_SESSION["alert"]["message"] = "Berjaya login.";
+                    $_SESSION["alert"]["type"] = "success";
+                }
+
                 $_POST = NULL;
                 header("Location:./info.php");
                 die();
             }
         }
-        $_SESSION["login"] = false;
+
+        $_SESSION["alert"]["message"] = "Tidak berjaya login.";
+        $_SESSION["alert"]["type"] = "danger";
         $_POST = NULL;
     }
 ?>
@@ -61,11 +71,7 @@
     </header>
     <div class="center centered-content" style="width:60%;margin:auto;">
         <h2>Login</h2>
-        <?php
-            if (isset($_SESSION["login"]) and $_SESSION["login"] == false) {
-                echo "<div class='alert alert-danger'>Tidak berjaya log masuk.</div>";
-            }
-        ?>
+        <?php alert() ?>
         <form action="login.php" method="post">
             <table class="table table-bordered" >
                 <tr>

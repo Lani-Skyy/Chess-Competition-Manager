@@ -19,6 +19,7 @@
     } catch (Exception $e) {}
     $is_peserta = isset($peserta);
 
+    // If have not registered peserta
     if (!$is_peserta) {
         $_SESSION["alert"]["message"] = "Tolong daftarkan peserta.";
         $_SESSION["alert"]["type"] = "warning";
@@ -40,6 +41,7 @@
         <?php alert() ?>
         <table class="table table-bordered">
             <?php
+                // List out peserta
                 if ($is_peserta) {
                     $string = <<<HEREDOC
                     <thead>

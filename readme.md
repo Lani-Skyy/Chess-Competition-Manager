@@ -8,7 +8,7 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 2. Start xampp (Apache and MySQL)
 3. Go to ```http://localhost/phpmyadmin/``` and create a database
 4. In sambungan.php, change the database name ```$database = 'database_name';```
-5. Go to ```localhost/SPPC/SPPC/login.php```
+5. Go to ```localhost/SPPC-main/SPPC-main/login.php```
 
 ## Components
 ### Database Tables (automatically created)

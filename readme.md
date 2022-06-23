@@ -2,7 +2,7 @@
 SPPC is a program to manage chess competitions (round robin). The system language is Malay.
 
 ## Installation (using xampp)
-⚠️ change folder_name and database_name to whatever you want
+❗ change folder_name and database_name to whatever you want
 
 1. Save and unzip this folder in ```C:/xampp/htdocs/```
     - Additionally, you can move the inner folder to htdocs, then rename it to something shorter

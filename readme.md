@@ -6,7 +6,7 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 
 1. Save and unzip this folder in ```C:/xampp/htdocs/```
     - Additionally, you can move the inner folder to htdocs, then rename it to something shorter
-2. Start xampp
+2. Start xampp (Apache and MySQL)
 3. Go to ```http://localhost/phpmyadmin/``` and create a database
 4. In sambungan.php, change the database name ```$database = 'database_name';```
 5. Go to ```localhost/folder_name/login.php```

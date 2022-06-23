@@ -2,13 +2,15 @@
 SPPC is a program to manage chess competitions (round robin). The system language is Malay.
 
 ## Installation (using xampp)
-❗ change folder_name and database_name to whatever you want
 
-1. Save and unzip this folder in ```C:/xampp/htdocs/```
-2. Start xampp (Apache and MySQL)
-3. Go to ```http://localhost/phpmyadmin/``` and create a database
-4. In sambungan.php, change the database name ```$database = 'database_name';```
-5. Go to ```localhost/SPPC-main/SPPC-main/login.php```
+1. Save and unzip this folder 
+    - (optional step) Move the inner folder ```SPPC-main/SPPC-main``` out so it becomes ```SPPC-main``` then rename it to ```SPPC``` 
+3. Move folder to ```C:/xampp/htdocs/```
+4. Start xampp (Apache and MySQL)
+6. Go to http://localhost/phpmyadmin/ and create a database called ```sppc```
+    - you can use any name actually, but change the database name in sambungan.php if you want to use another name
+7. Go to http://localhost/SPPC/login.php 
+    - if you didn't do the optional step, use this instead http://localhost/SPPC-main/SPPC-main/login.php
 
 ## Components
 ### Database Tables (automatically created)
@@ -52,3 +54,4 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 1. alerts
 2. export
 3. import
+4. simplify

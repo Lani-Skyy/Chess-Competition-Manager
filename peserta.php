@@ -39,7 +39,7 @@
             die();
         }
 
-        // Add Peserta 
+        // Add Peserta (textbox)
         if (isset($_POST["submit"])) {
             $not_allowed = [""," ","NULL"];
             // Error Checking
@@ -70,13 +70,11 @@
                         // Insert peserta 
                         $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
                         $result = mysqli_query($sambungan,$sql);
-                        $inserted = true;
                     }
                 }
             }
         }
-
-        // Upload
+        // Add Peserta (upload)
         if (isset($_POST["upload"])) {
             $name = $_FILES['file']['name'];
             $type = $_FILES['file']['type'];
@@ -91,6 +89,20 @@
             else if (move_uploaded_file($tmp, $name)) {
                 echo "The file has been uploaded.";
             }
+
+            $not_allowed = [""," ","NULL"];
+            $csv = array_map('str_getcsv', file($name));
+            foreach ($csv as $line) {
+                $no_kp = trim($line[0]);
+                $nama = trim($line[1]);
+                if (in_array($no_kp,$not_allowed) or in_array($nama,$not_allowed)) {
+                    $_POST = NULL;
+                    die("not accepted");
+                }
+                $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
+                $result = mysqli_query($sambungan,$sql);
+            }
+            die("succesfully added");
         }
 
         $_POST = NULL;

@@ -3,6 +3,7 @@
     if ($_SESSION["login"] == false)
         header("Location:./login.php");
     include("sambungan.php");
+    include("functions.php");
 
     // Create peserta table
     try {
@@ -34,6 +35,8 @@
                 $sql = "DROP TABLE scores";
                 $result = mysqli_query($sambungan,$sql);
             } catch (Exception $e) {}
+            $_SESSION["alert"]["message"] = "Berjaya reset.";
+            $_SESSION["alert"]["type"] = "success";
             $_POST = NULL;
             header("Location:./peserta.php");
             die();
@@ -55,9 +58,11 @@
             for ($i=0; $i<sizeof($string); $i++) {
                 $error = false;
                 $string1 = $string[$i];
+
                 // Error Checking
                 if (!isset(explode(",",$string1)[0]) or !isset(explode(",",$string1)[1]))
                     $error = true;
+
                 else if ($error == false) {
                     $no_kp = trim(explode(",",$string1)[0]);
                     $nama = trim(explode(",",$string1)[1]);
@@ -70,10 +75,12 @@
                         // Insert peserta 
                         $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
                         $result = mysqli_query($sambungan,$sql);
+                        $inserted = true;
                     }
                 }
             }
         }
+
         // Add Peserta (upload)
         if (isset($_POST["upload"])) {
             $name = $_FILES['file']['name'];
@@ -82,30 +89,47 @@
             $tmp = $_FILES['file']['tmp_name'];
 
             // Allow certain file formats
-            if($type != "text/csv") {
-                echo "Hanya .csv diterima.";
+            if ($type != "text/csv") {
+                $_SESSION["alert"]["message"] = "Tidak berjaya insert. Hanya csv diterima.";
+                $_SESSION["alert"]["type"] = "danger";
+                $_POST = NULL;
+                header("Location:./peserta.php");
+                die();
             }
 
-            else if (move_uploaded_file($tmp, $name)) {
-                echo "The file has been uploaded.";
-            }
-
+            move_uploaded_file($tmp, $name);
             $not_allowed = [""," ","NULL"];
             $csv = array_map('str_getcsv', file($name));
             foreach ($csv as $line) {
                 $no_kp = trim($line[0]);
                 $nama = trim($line[1]);
                 if (in_array($no_kp,$not_allowed) or in_array($nama,$not_allowed)) {
+                    $_SESSION["alert"]["message"] = "Tidak berjaya upload.";
+                    $_SESSION["alert"]["type"] = "danger";
                     $_POST = NULL;
-                    die("not accepted");
+                    header("Location:./peserta.php");
+                    die();
                 }
                 $sql = "INSERT INTO peserta (no_kp,nama) VALUES ('$no_kp','$nama')";
                 $result = mysqli_query($sambungan,$sql);
+                $inserted = true;
             }
-            die("succesfully added");
+            $_SESSION["alert"]["message"] = "Berjaya upload.";
+            $_SESSION["alert"]["type"] = "success";
+            $_POST = NULL;
+            header("Location:./peserta.php");
+            die();
         }
 
         $_POST = NULL;
+    }
+
+    if (isset($inserted)) {
+        $_SESSION["alert"]["message"] = "Berjaya insert peserta.";
+        $_SESSION["alert"]["type"] = "success";
+        $_POST = NULL;
+        header("Location:./peserta.php");
+        die();
     }
 
     // Get all peserta
@@ -121,10 +145,6 @@
             ];
         }
     }
-    if (isset($inserted)) {
-        header("Location:./peserta.php");
-        die();
-    }
 ?>
 
 <!DOCTYPE html>
@@ -137,14 +157,22 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center" style="width:50%;margin:auto;">
+    <div class="center">
         <h2>Peserta</h2>
-        <div>
-            <form action="peserta.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <input type="submit" name="upload" value="upload">
-            </form>
-        </div>
+        <?php alert() ?>
+        <?php
+        if (sizeof($peserta) == 0) {
+            $string = <<<HEREDOC
+            <div>
+                <form action="peserta.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file">
+                    <input type="submit" name="upload" value="upload">
+                </form>
+            </div>
+            HEREDOC;
+            echo $string;
+        }
+        ?>
         <form action="peserta.php" method="post">
             <table class="table table-bordered">
                 <?php

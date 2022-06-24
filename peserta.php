@@ -40,7 +40,6 @@
         }
 
         // Add Peserta 
-        // Problem: Inserts valid input when invalid input exists among valid input
         if (isset($_POST["submit"])) {
             $not_allowed = [""," ","NULL"];
             // Error Checking
@@ -74,6 +73,23 @@
                         $inserted = true;
                     }
                 }
+            }
+        }
+
+        // Upload
+        if (isset($_POST["upload"])) {
+            $name = $_FILES['file']['name'];
+            $type = $_FILES['file']['type'];
+            $size = $_FILES['file']['size'];
+            $tmp = $_FILES['file']['tmp_name'];
+
+            // Allow certain file formats
+            if($type != "text/csv") {
+                echo "Hanya .csv diterima.";
+            }
+
+            else if (move_uploaded_file($tmp, $name)) {
+                echo "The file has been uploaded.";
             }
         }
 
@@ -111,6 +127,12 @@
     </header>
     <div class="center" style="width:50%;margin:auto;">
         <h2>Peserta</h2>
+        <div>
+            <form action="peserta.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <input type="submit" name="upload" value="upload">
+            </form>
+        </div>
         <form action="peserta.php" method="post">
             <table class="table table-bordered">
                 <?php

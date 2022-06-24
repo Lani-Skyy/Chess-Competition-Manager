@@ -88,11 +88,12 @@
         <h2>Keputusan</h2>
         <?php alert() ?>
         <form action="download.php?file=keputusan.csv" method="post">
-            <input type="submit" value="export" name="export">
             <table class="table table-bordered">
                 <?php
-                    // List keputusan
                     if ($is_peserta) {
+                        echo '<input type="submit" value="export" name="export">';
+                        
+                        // List keputusan
                         $string = <<<HEREDOC
                         <thead>
                             <tr>

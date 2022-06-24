@@ -59,7 +59,24 @@
                 ];
                 $i++;
             }
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+            // Format keputusan data
+            $i = 1;
+            foreach ($peserta as $key => $value) {
+                $skor = 0;
+                $id = $key;
+                $no_kp = $value["no_kp"];
+                $nama = $value["nama"];
+                $keputusan[] = [
+                    "rank" => $i,
+                    "id" => $id,
+                    "no_kp" => $no_kp,
+                    "nama" => $nama,
+                    "skor" => $skor
+                ];
+                $i++;
+            }
+        }
 
         // Export keputusan
         $out = fopen("keputusan.csv", 'w');
@@ -70,6 +87,7 @@
         }
         fclose($out);
         header("download.php?file=keputusan.csv");
+
         $_POST = NULL;
     }
 ?>

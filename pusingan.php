@@ -3,6 +3,7 @@
     if ($_SESSION["login"] == false)
         header("Location:./login.php");
     include("sambungan.php");
+    include("functions.php");
     include("algorithm.php");
 
     // Get all peserta
@@ -138,6 +139,8 @@
                     }
                 }
             }
+            $_SESSION["alert"]["message"] = "Berjaya insert skor.";
+            $_SESSION["alert"]["type"] = "success";
             $_POST = NULL;
         }
 
@@ -150,6 +153,8 @@
                 $result = mysqli_query($sambungan,$sql);
             } catch (Exception $e) {}
             $_POST = NULL;
+            $_SESSION["alert"]["message"] = "Berjaya clear.";
+            $_SESSION["alert"]["type"] = "success";
         }
 
         // Reset
@@ -161,6 +166,8 @@
             $_POST = NULL;
             unset($_SESSION["round"]);
             $round = "0";
+            $_SESSION["alert"]["message"] = "Berjaya reset.";
+            $_SESSION["alert"]["type"] = "success";
         }
     }
 ?>
@@ -177,6 +184,7 @@
     </header>
     <div class="center">
         <h2>Pusingan</h2>
+        <?php alert() ?>
         <form action="pusingan.php" method="post">
             <table class="table table-bordered">
                 <tr>

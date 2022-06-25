@@ -2,15 +2,6 @@
     $host = 'localhost';
     $user = 'root';
     $password = '';
-    $database = 'pertandingan'; // Tukar nama jika berlainan
-
+    $database = 'sppc'; // Tukar nama jika berlainan
     $sambungan = mysqli_connect($host,$user,$password,$database);
-    // if(!$sambungan)
-    // {
-    //     die("<p>Sambungan gagal</p>");
-    // }
-    // else 
-    // {
-    //     echo "<p>Sambungan berjaya</p>";
-    // }
 ?>

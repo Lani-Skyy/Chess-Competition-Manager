@@ -3,11 +3,55 @@
     if ($_SESSION["login"] == false)
         header("Location:./login.php");
     include("sambungan.php");
+    include("functions.php");
 
     // Get all data
     $nama_pengguna = $_SESSION["urusetia"]["nama_pengguna"];
     $kata_laluan = $_SESSION["urusetia"]["kata_laluan"];
     $id = $_SESSION["urusetia"]["id"];
+
+    if ($_POST) {
+        // Update
+        if (array_search('update', $_POST)) {
+            $mode = array_search('update', $_POST);
+            $mode = substr($mode, 7, );
+            $string = $_POST["$mode"];
+            $readable = str_replace("_"," ","$mode");
+
+            // Error Checking
+            if ($string == "") {
+                $_SESSION["alert"]["message"] = "Tolong berikan $readable.";
+                $_SESSION["alert"]["type"] = "warning";
+            } else {
+                $sql = "UPDATE urusetia SET $mode = '$string' WHERE id = $id";
+                $result = mysqli_query($sambungan,$sql);
+                if ($result) {
+                    $_SESSION["urusetia"]["$mode"] = $string;
+                    
+                    $_SESSION["alert"]["message"] = "Berjaya update $readable.";
+                    $_SESSION["alert"]["type"] = "success";
+                    $_POST = NULL;
+                    header("Location:./urusetia.php");
+                    die();
+                }
+            }
+        }
+
+        // Delete
+        if (array_search('delete', $_POST)) {
+            $sql = "DELETE FROM urusetia WHERE id = $id";
+            $result = mysqli_query($sambungan,$sql);
+            if ($result) {
+                $_SESSION["alert"]["message"] = "Berjaya delete urusetia.";
+                $_SESSION["alert"]["type"] = "success";
+                $_POST = NULL;
+                header("Location:./login.php");
+                die();
+            }
+        }
+
+        $_POST = NULL;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,44 +66,7 @@
     </header>
     <div class="center centered-content" style="width:70%;margin:auto;">
         <h2>Urusetia</h2>
-        <?php
-            if ($_POST) {
-                // Update
-                if (array_search('update', $_POST)) {
-                    $mode = array_search('update', $_POST);
-                    $mode = substr($mode, 7, );
-                    $string = $_POST["$mode"];
-        
-                    // Error Checking
-                    if ($string == "") {
-                        echo "<div class='alert alert-warning'>Tolong berikan $mode.</div>";
-                    } else {
-                        $sql = "UPDATE urusetia SET $mode = '$string' WHERE id = $id";
-                        $result = mysqli_query($sambungan,$sql);
-                        if ($result) {
-                            $_SESSION["urusetia"]["$mode"] = $string;
-            
-                            $_POST = NULL;
-                            header("Location:./urusetia.php");
-                            die();
-                        }
-                    }
-                }
-        
-                // Delete
-                if (array_search('delete', $_POST)) {
-                    $sql = "DELETE FROM urusetia WHERE id = $id";
-                    $result = mysqli_query($sambungan,$sql);
-                    if ($result) {
-                        $_POST = NULL;
-                        header("Location:./login.php");
-                        die();
-                    }
-                }
-
-                $_POST = NULL;
-            }
-        ?>
+        <?php alert(); ?>
         <form action="urusetia.php" method="post">
             <table class="table table-bordered">
                 <tr>

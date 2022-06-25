@@ -1,16 +1,16 @@
 # Sistem Pengurusan Pertandingan Catur (SPPC)
 SPPC is a program to manage chess competitions (round robin). The system language is Malay.
 
-
 ## Installation (using xampp)
-⚠️ path and url can differ based on operating system
 
-1. Start xampp.
-2. Save and unzip this folder in ```C:/xampp/htdocs/``` 
-    - Additionally, you can move the inner folder to htdocs, then rename it to something shorter
-3. Create a database (collation: utf8mb4_general_ci) in phpMyAdmin through localhost in your browser ```http://localhost/phpmyadmin/```
-4. In sambungan.php, change the database name to the name of the database you created earlier. ```$database = 'database_name';```
-5. Go to login.php through localhost in your browser. ```localhost/folder_name/login.php```
+1. Save and unzip this folder 
+    - (optional step) Move the inner folder ```SPPC-main/SPPC-main``` out so it becomes ```SPPC-main``` then rename it to ```SPPC``` 
+3. Move folder to ```C:/xampp/htdocs/```
+4. Start xampp (Apache and MySQL)
+6. Go to http://localhost/phpmyadmin/ and create a database called ```sppc```
+    - you can use any name actually, but change the database name in sambungan.php if you want to use another name
+7. Go to http://localhost/SPPC/login.php 
+    - if you didn't do the optional step, use this instead http://localhost/SPPC-main/SPPC-main/login.php
 
 ## Components
 ### Database Tables (automatically created)
@@ -37,6 +37,7 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 - sambungan.php
 - log_keluar.php
 - algorithm.php
+- functions.php
 
 ## Screenshots
 ![login](screenshots/login.png)
@@ -48,3 +49,9 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 ![pusingan_selepas](screenshots/pusingan_selepas.png)
 ![keputusan](screenshots/keputusan.png)
 ![urusetia](screenshots/urusetia.png)
+
+## TODO
+1. alerts /
+2. export /
+3. import /
+4. simplify

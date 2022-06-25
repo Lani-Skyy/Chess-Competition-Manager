@@ -3,6 +3,7 @@
     if ($_SESSION["login"] == false)
         header("Location:./login.php");
     include("sambungan.php");
+    include("functions.php");
 
     // create hakim table
     try {
@@ -31,6 +32,82 @@
             ];
         }
     }
+
+    if ($_POST) {
+        $not_allowed = [""," ","NULL"];
+
+        // Create
+        if (array_search('create', $_POST)) {
+            // Error Checking
+            if (in_array($_POST['insert'],$not_allowed)) {
+                $_SESSION["alert"]["message"] = "Tolong isikan nama hakim.";
+                $_SESSION["alert"]["type"] = "danger";
+            } else {
+                $string = $_POST['insert'];
+                $sql = "INSERT INTO hakim (nama) VALUES ('$string')";
+                $result = mysqli_query($sambungan,$sql);
+                if ($result) {
+                    $_POST = NULL;
+                    $_SESSION["alert"]["message"] = "Berjaya insert hakim.";
+                    $_SESSION["alert"]["type"] = "success";
+                    header("Location:./hakim.php");
+                    die();
+                }
+            }
+        }
+
+        // Reset
+        if (array_search('reset', $_POST)) {
+            $sql = "DELETE FROM hakim";
+            $result = mysqli_query($sambungan,$sql);
+            if ($result) {
+                $_POST = NULL;
+                $_SESSION["alert"]["message"] = "Berjaya reset.";
+                $_SESSION["alert"]["type"] = "success";
+                header("Location:./hakim.php");
+                die();
+            }
+        }
+
+        // Update
+        if (array_search('update', $_POST)) {
+            // Error Checking
+            if (in_array($_POST['insert'],$not_allowed)) {
+                $_SESSION["alert"]["message"] = "Tolong isikan nama hakim.";
+                $_SESSION["alert"]["type"] = "danger";
+            } else {
+                $new_nama = $_POST['insert'];
+                $index = substr(array_search('update', $_POST), 7, );
+                $hakim_id = $hakim[$index]["id"];
+                $sql = "UPDATE hakim SET nama = '$new_nama' WHERE id = $hakim_id";
+                $result = mysqli_query($sambungan,$sql);
+                if ($result) {
+                    $_POST = NULL;
+                    $_SESSION["alert"]["message"] = "Berjaya update.";
+                    $_SESSION["alert"]["type"] = "success";
+                    header("Location:./hakim.php");
+                    die();
+                }
+            }
+        }
+
+        // Delete
+        if (array_search('delete', $_POST)) {
+            $index = substr(array_search('delete', $_POST), 7, );
+            $hakim_id = $hakim[$index]["id"];
+            $sql = "DELETE FROM hakim WHERE id = $hakim_id";
+            $result = mysqli_query($sambungan,$sql);
+            if ($result) {
+                $_POST = NULL;
+                $_SESSION["alert"]["message"] = "Berjaya delete.";
+                $_SESSION["alert"]["type"] = "success";
+                header("Location:./hakim.php");
+                die();
+            }
+        }
+
+        $_POST = NULL;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,74 +122,7 @@
     </header>
     <div class="center centered-content" style="width:60%;margin:auto;">
         <h2>Hakim</h2>
-    <?php
-        // Check user input
-        if ($_POST) {
-            $not_allowed = [""," ","NULL"];
-
-            // Create
-            if (array_search('create', $_POST)) {
-                // Error Checking
-                if (in_array($_POST['insert'],$not_allowed)) {
-                    echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
-                } else {
-                    $string = $_POST['insert'];
-                    $sql = "INSERT INTO hakim (nama) VALUES ('$string')";
-                    $result = mysqli_query($sambungan,$sql);
-                    if ($result) {
-                        $_POST = NULL;
-                        header("Location:./hakim.php");
-                        die();
-                    }
-                }
-            }
-
-            // Reset
-            if (array_search('reset', $_POST)) {
-                $sql = "DELETE FROM hakim";
-                $result = mysqli_query($sambungan,$sql);
-                if ($result) {
-                    $_POST = NULL;
-                    header("Location:./hakim.php");
-                    die();
-                }
-            }
-
-            // Update
-            if (array_search('update', $_POST)) {
-                // Error Checking
-                if (in_array($_POST['insert'],$not_allowed)) {
-                    echo "<div class='alert alert-warning'>Tolong isikan nama hakim.</div>";
-                } else {
-                    $new_nama = $_POST['insert'];
-                    $index = substr(array_search('update', $_POST), 7, );
-                    $hakim_id = $hakim[$index]["id"];
-                    $sql = "UPDATE hakim SET nama = '$new_nama' WHERE id = $hakim_id";
-                    $result = mysqli_query($sambungan,$sql);
-                    if ($result) {
-                        $_POST = NULL;
-                        header("Location:./hakim.php");
-                        die();
-                    }
-                }
-            }
-
-            // Delete
-            if (array_search('delete', $_POST)) {
-                $index = substr(array_search('delete', $_POST), 7, );
-                $hakim_id = $hakim[$index]["id"];
-                $sql = "DELETE FROM hakim WHERE id = $hakim_id";
-                $result = mysqli_query($sambungan,$sql);
-                if ($result) {
-                    $_POST = NULL;
-                    header("Location:./hakim.php");
-                    die();
-                }
-            }
-
-            $_POST = NULL;
-        }
-    ?>
+        <?php alert() ?>
         <form action="hakim.php" method="post">
             <table class="table table-bordered" >
                 <thead>

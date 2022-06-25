@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $_SESSION["page"] = "info.php";
     include("sambungan.php");
+    include("functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
     </header>
     <div class="center centered-content">
         <h2>Info</h2>
+        <?php alert(); ?>
         <h3>Cara Penggunaan:</h3>
         <ol>
             <li>Daftar atau login urusetia.</li>
@@ -26,7 +27,6 @@
             <li>Ulang sampai semua pusingan habis.</li>
             <li>Dapatkan keputusan akhir.</li>
         </ol>
-        <h6 style="text-decoration:overline; ">Lanisha Anusri</h6>
     </div>
 </body>
 </html>

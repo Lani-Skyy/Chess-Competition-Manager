@@ -12,14 +12,6 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 7. Go to http://localhost/SPPC/login.php 
     - if you didn't do the optional step, use this instead http://localhost/SPPC-main/SPPC-main/login.php
 
-## Components
-### Database Tables (automatically created)
-- urusetia
-- hakim
-- peserta
-- scores
-- matches
-
 ### Pages
 - login.php
 - info.php
@@ -28,16 +20,6 @@ SPPC is a program to manage chess competitions (round robin). The system languag
 - peserta.php
 - pusingan.php
 - keputusan.php
-
-### Components
-- styles.css
-- head.php
-- navbar_1.php
-- navbar_2.php
-- sambungan.php
-- log_keluar.php
-- algorithm.php
-- functions.php
 
 ## Screenshots
 ![login](screenshots/login.png)

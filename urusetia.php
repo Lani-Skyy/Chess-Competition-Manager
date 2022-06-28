@@ -64,31 +64,35 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center centered-content" style="width:70%;margin:auto;">
+    <div class="center centered-content" style="width:60%;margin:auto;">
         <h2>Urusetia</h2>
         <?php alert(); ?>
         <form action="urusetia.php" method="post">
             <table class="table table-bordered">
-                <tr>
-                    <td style="width:10%;color: var(--ltext);background-color: var(--dark2);">Id</td>
-                    <td style="color: var(--ltext);background-color: var(--dark2);">Nama Pengguna</td>
-                    <td style="color: var(--ltext);background-color: var(--dark2);">Kata Laluan</td>
-                </tr>
-                <tr>
-                    <td><?php echo "$id";?></td>
-                    <td><?php echo "$nama_pengguna";?></td>
-                    <td><?php echo "$kata_laluan";?></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input style="width:100%" class="text-center" type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters"></td>
-                    <td><input style="width:100%" class="text-center" type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="update_nama_pengguna" value="update"></td>
-                    <td><input type="submit" name="update_kata_laluan" value="update"></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td style="width:10%;color: var(--ltext);background-color: var(--dark2);">Id</td>
+                        <td style="color: var(--ltext);background-color: var(--dark2);">Nama Pengguna</td>
+                        <td style="color: var(--ltext);background-color: var(--dark2);">Kata Laluan</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo "$id";?></td>
+                        <td><?php echo "$nama_pengguna";?></td>
+                        <td><?php echo "$kata_laluan";?></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input style="width:100%" class="text-center" type="text" name="nama_pengguna" autocomplete="off" placeholder="max 30 characters"></td>
+                        <td><input style="width:100%" class="text-center" type="password" name="kata_laluan" autocomplete="off" placeholder="max 15 characters"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="update_nama_pengguna" value="update"></td>
+                        <td><input type="submit" name="update_kata_laluan" value="update"></td>
+                    </tr>
+                </tbody>
             </table>
             <input style="margin-top:0.5%;" type="submit" name="delete" value="delete">
         </form>

@@ -18,14 +18,8 @@
     } catch (Exception $e) {}
     $is_peserta = isset($peserta);
 
-    // If have not registered peserta
-    if (!$is_peserta) {
-        $_SESSION["alert"]["message"] = "Tolong daftarkan peserta.";
-        $_SESSION["alert"]["type"] = "warning";
-    }
-
     // If have registered
-    else {
+    if ($is_peserta) {
         try {
             // Get scores
             $sql = "SELECT * FROM scores";
@@ -115,11 +109,11 @@
                         $string = <<<HEREDOC
                         <thead>
                             <tr>
-                                <td>Kedudukan</td>
-                                <td>Id</td>
-                                <td>No. KP</td>
-                                <td>Nama</td>
-                                <td>Skor</td>
+                                <td style="width:10%">Kedudukan</td>
+                                <td style="width:10%">Id</td>
+                                <td style="width:10%">No. KP</td>
+                                <td style="width:20%">Nama</td>
+                                <td style="width:10%">Skor</td>
                             <tr>
                         </thead>
                         HEREDOC;
@@ -134,6 +128,8 @@
                         }
                         $string = $string . "</tbody>";
                         echo $string;
+                    } else {
+                        echo "<div class='alert alert-warning'>Tolong daftarkan peserta.</div>";
                     }
                 ?>
             </table>

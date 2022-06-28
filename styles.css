@@ -21,7 +21,8 @@ body {
 .center {
     margin: auto;
     width: 80%;
-    padding-top:2%;
+    padding-top:1%;
+    padding-bottom:1%;
 }
 
 h2 {
@@ -76,11 +77,11 @@ input[type=submit] {
 }
 
 /* Tables */
-tbody {
+.table tbody {
     background-color: var(--ltext);
 }
 
-thead {
+.table thead {
     color: var(--ltext);
     background-color: var(--dark2);
 }

@@ -186,15 +186,15 @@
         <h2>Pusingan</h2>
         <?php alert() ?>
         <form action="pusingan.php" method="post">
-            <table class="table table-bordered">
+            <table class="table">
                 <tr>
                     <?php
-                        if (isset($_SESSION["round"])) {
-                            $temp = $round+1;
-                            echo "<h3>Pusingan $temp</h3>";
-                        }
                         if ($is_peserta) {
-                            echo "<td>Pusingan: </td>";
+                            if (isset($_SESSION["round"])) {
+                               echo "<td>Pusingan: " . $_SESSION["round"]+1 . "</td>";
+                            } else {
+                                echo "<td>Pusingan:</td>";
+                            }
                             for ($i=1; $i < $num_rounds+1; $i++) {
                                 $string = <<<HEREDOC
                                 <td><input style="min-width: 50px;" type="submit" class="round" name="round" value="$i"></td>
@@ -213,20 +213,20 @@
                         $string = <<<HEREDOC
                         <thead>
                             <tr>
-                                <td></td>
-                                <td>Putih</td>
-                                <td></td>
-                                <td></td>
-                                <td>Hitam</td>
-                                <td></td>
+                                <td style="border:none"></td>
+                                <td style="border:none">Putih</td>
+                                <td style="border:none"></td>
+                                <td style="border-right:none;border-top:none;border-bottom:none;"></td>
+                                <td style="border:none">Hitam</td>
+                                <td style="border:none"></td>
                             </tr>
                             <tr>
-                                <td>No. KP</td>
-                                <td>Nama</td>
-                                <td>Keputusan</td>
-                                <td>Keputusan</td>
-                                <td>Nama</td>
-                                <td>No. KP</td>
+                                <td style="border-top:none;width:10%;">No. KP</td>
+                                <td style="border-top:none;width:30%;">Nama</td>
+                                <td style="border-top:none;width:10%;">Keputusan</td>
+                                <td style="border-top:none;width:10%;">Keputusan</td>
+                                <td style="border-top:none;width:30%;">Nama</td>
+                                <td style="border-top:none;width:10%;">No. KP</td>
                             </tr>
                         </thead>
 

@@ -120,35 +120,37 @@
             include("navbar_2.php");
         ?>
     </header>
-    <div class="center centered-content" style="width:60%;margin:auto;">
+    <div class="center">
         <h2>Hakim</h2>
         <?php alert() ?>
-        <form action="hakim.php" method="post">
-            <table class="table table-bordered" >
-                <thead>
-                    <tr>
-                        <td><input style="width:80%" class="text-center" type="text" name="insert" autocomplete="off" autofocus placeholder="taip sini"></td>
-                        <td><input type="submit" name="create" value="create"></td>
-                        <td><input type="submit" name="reset" value="reset"></td>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                    for ($i=0; $i < sizeof($hakim); $i++) {
-                        $string1 = $hakim[$i]["nama"];
-                        $string2 = <<<HEREDOC
+        <div style="width:70%;margin:auto;padding-top:5px;">
+            <form action="hakim.php" method="post">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td>$string1</td>
-                            <td><input type="submit" name="update_$i" value="update"></td>
-                            <td><input type="submit" name="delete_$i" value="delete"></td>
+                            <td><input style="width:80%" class="text-center" type="text" name="insert" autocomplete="off" autofocus placeholder="taip sini"></td>
+                            <td><input type="submit" name="create" value="create"></td>
+                            <td><input type="submit" name="reset" value="reset"></td>
                         </tr>
-                        HEREDOC;
-                        echo $string2;
-                    }
-                ?>
-                </tbody>
-            </table>
-        </form>
+                    </thead>
+                    <tbody>
+                    <?php
+                        for ($i=0; $i < sizeof($hakim); $i++) {
+                            $string1 = $hakim[$i]["nama"];
+                            $string2 = <<<HEREDOC
+                            <tr>
+                                <td>$string1</td>
+                                <td><input type="submit" name="update_$i" value="update"></td>
+                                <td><input type="submit" name="delete_$i" value="delete"></td>
+                            </tr>
+                            HEREDOC;
+                            echo $string2;
+                        }
+                    ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 </body>
 </html>

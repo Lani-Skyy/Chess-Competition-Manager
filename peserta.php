@@ -163,10 +163,14 @@
         <?php
         if (sizeof($peserta) == 0) {
             $string = <<<HEREDOC
-            <div>
+            <div style="display: flex;justify-content: center;" class="center">
                 <form action="peserta.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file">
-                    <input type="submit" name="upload" value="upload">
+                    <table>
+                        <tr>
+                            <td><input type="file" name="file"></td>
+                            <td><input type="submit" name="upload" value="upload"></td>
+                        </tr>
+                    </table>
                 </form>
             </div>
             HEREDOC;
@@ -174,7 +178,6 @@
         }
         ?>
         <form action="peserta.php" method="post">
-            <table class="table table-bordered">
                 <?php
                     // if no peserta
                     if (sizeof($peserta) == 0) {
@@ -185,14 +188,16 @@
                         HEREDOC;
 
                         $string = <<<HEREDOC
-                        <tr>
-                            <td>
-                                <textarea autofocus rows = "10" cols = "60" name="peserta" autocomplete="off" placeholder="$format"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" name="submit" value="submit"></td>
-                        </tr>
+                        <table class="center">
+                            <tr>
+                                <td>
+                                    <textarea autofocus rows = "10" cols = "60" name="peserta" autocomplete="off" placeholder="$format"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="submit" value="submit"></td>
+                            </tr>
+                        </table>
                         HEREDOC;
                         echo $string;
                     }
@@ -200,17 +205,18 @@
                     // if have peserta
                     else {
                         $string = <<<HEREDOC
-                        <input type="submit" name="reset" value="reset" style="width: 100%;"></td>
-                        <thead>
-                            <tr>
-                                <td>Id</td>
-                                <td>No KP</td>
-                                <td>Nama</td>
-                            </tr>
-                        </thead>
+                        <table class="table table-bordered">
+                            <input type="submit" name="reset" value="reset"></td>
+                            <thead>
+                                <tr>
+                                    <td style="width:20%">Id</td>
+                                    <td style="width:20%">No KP</td>
+                                    <td style="width:40%;">Nama</td>
+                                </tr>
+                            </thead>
                         HEREDOC;
                         echo $string;
-
+                        echo "<tbody>";
                         for ($i=0; $i < sizeof($peserta); $i++) {
                             $id = $peserta[$i]["id"];
                             $no_kp = $peserta[$i]["no_kp"];
@@ -224,9 +230,9 @@
                             HEREDOC;
                             echo $string;
                         }
+                        echo "</tbody></table>";
                     }
                 ?>
-            </table>
         </form>
     </div>
 </body>
